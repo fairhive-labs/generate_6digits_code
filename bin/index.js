@@ -3,17 +3,17 @@
 const yargs = require('yargs/yargs')
 const { hideBin } = require('yargs/helpers')
 const argv = yargs(hideBin(process.argv))
-    .option('length', {
-        alias: 'l',
+    .option('digits', {
+        alias: 'd',
         type: 'number',
-        description: 'length of code',
+        description: 'number of digits',
         default: 6
     })
     .parse()
 
-var max = 10 ** argv.l
+var max = 10 ** argv.d
 var code = Math.floor(Math.random() * max).toLocaleString('en-US', {
-    minimumIntegerDigits: argv.length,
+    minimumIntegerDigits: argv.d,
     useGrouping: false
 })
 
