@@ -1,8 +1,7 @@
 # generate_6digits_code
 
-> docker build -t rvf4rvyhw/gen6dcode .
+> gen6dcode
 
-> docker run -it --rm rvf4rvyhw/gen6dcode
 ```
-776737
+Your code: 776737
 ```
