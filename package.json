@@ -1,5 +1,5 @@
 {
-  "name": "gen6dcode",
+  "name": "@poln/gen6dcode",
   "version": "1.0.0",
   "description": "generates 6 digits codes",
   "main": "server.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/fairhive-labs/generate_6digits_code.git"
+    "url": "git+https://github.com/fairhive-labs/generate_6digits_code.git"
   },
   "keywords": [
     "crypto",
@@ -18,5 +18,8 @@
   ],
   "author": "whyvrafvr",
   "license": "ISC",
-  "homepage": "https://github.com/fairhive-labs/generate_6digits_code"
+  "homepage": "https://github.com/fairhive-labs/generate_6digits_code",
+  "bugs": {
+    "url": "https://github.com/fairhive-labs/generate_6digits_code/issues"
+  }
 }
