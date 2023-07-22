@@ -7,9 +7,16 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fairhive-labs/generate_6digits_code.git"
+  },
   "keywords": [
-    "crypto"
+    "crypto",
+    "code",
+    "bank"
   ],
-  "author": "elliot",
-  "license": "ISC"
+  "author": "whyvrafvr",
+  "license": "ISC",
+  "homepage": "https://github.com/fairhive-labs/generate_6digits_code"
 }
