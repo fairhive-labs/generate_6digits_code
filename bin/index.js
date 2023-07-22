@@ -1,4 +1,7 @@
 #!/usr/bin/env node
 
-var max = 1000000;
-console.log(Math.floor(Math.random() * max));
+const max = 1000000;
+console.log('Your code:', Math.floor(Math.random() * max).toLocaleString('en-US', {
+    minimumIntegerDigits: 6,
+    useGrouping: false
+}));
