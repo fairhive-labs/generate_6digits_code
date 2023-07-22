@@ -1,6 +1,6 @@
 {
   "name": "@poln/gen6dcode",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "generates 6 digits codes",
   "bin": "./bin/index.js",
   "scripts": {
@@ -22,5 +22,8 @@
   "homepage": "https://github.com/fairhive-labs/generate_6digits_code",
   "bugs": {
     "url": "https://github.com/fairhive-labs/generate_6digits_code/issues"
+  },
+  "dependencies": {
+    "yargs": "^17.7.2"
   }
 }
