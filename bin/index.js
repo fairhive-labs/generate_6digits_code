@@ -17,4 +17,4 @@ var code = Math.floor(Math.random() * max).toLocaleString('en-US', {
     useGrouping: false
 })
 
-console.log('Your code:', `\x1b[33m${code} \x1b[0m`);
+console.log(`=> [ \x1b[33m${code} \x1b[0m]`);
