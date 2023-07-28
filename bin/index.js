@@ -11,10 +11,15 @@ const argv = yargs(hideBin(process.argv))
     })
     .parse()
 
+if (argv.d <= 0 || argv.d > 20) {
+    console.error('incompatible value [', argv.d, '] : failing back to 6 digits !')
+    argv.d = 6;
+}
+
 var max = 10 ** argv.d
 var code = Math.floor(Math.random() * max).toLocaleString('en-US', {
     minimumIntegerDigits: argv.d,
     useGrouping: false
 })
-
+console.log(argv.d, 'digits')
 console.log(`=> [ \x1b[33m${code} \x1b[0m]`);

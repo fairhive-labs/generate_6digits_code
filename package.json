@@ -1,6 +1,6 @@
 {
   "name": "@poln/gen6dcode",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "description": "generates 6 digits codes",
   "bin": "./bin/index.js",
   "scripts": {
