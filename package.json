@@ -1,6 +1,6 @@
 {
   "name": "@poln/gen6dcode",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "generates 6 digits codes",
   "bin": {
     "gen6dcode": "bin/index.js"
@@ -30,6 +30,9 @@
   "homepage": "https://github.com/fairhive-labs/generate_6digits_code",
   "bugs": {
     "url": "https://github.com/fairhive-labs/generate_6digits_code/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "engines": {
     "node": "24.x"
