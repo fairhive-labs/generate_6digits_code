@@ -72,6 +72,18 @@ const cliVersion = runCli(['--version'])
 assert.strictEqual(cliVersion.status, 0, cliVersion.stderr)
 assert.strictEqual(cliVersion.stdout.trim(), packageJson.version)
 
+const cliJson = runCli(['--json', '-d', '8'])
+assert.strictEqual(cliJson.status, 0, cliJson.stderr)
+assert.strictEqual(cliJson.stderr, '')
+const jsonOutput = JSON.parse(cliJson.stdout)
+assert.deepStrictEqual(jsonOutput, {
+    name: packageJson.name,
+    version: packageJson.version,
+    digits: 8,
+    code: jsonOutput.code
+})
+assert.match(jsonOutput.code, /^[0-9]{8}$/)
+
 const cliInvalid = runCli(['-d', '0'])
 assert.strictEqual(cliInvalid.status, 1)
 assert.match(cliInvalid.stderr, /--digits must be an integer between 1 and 20/)

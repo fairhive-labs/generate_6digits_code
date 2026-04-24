@@ -35,6 +35,13 @@ gen6dcode --digits 8
 gen6dcode -d 20
 ```
 
+Generate JSON output:
+
+```bash
+gen6dcode --json
+gen6dcode --json --digits 8
+```
+
 Show help:
 
 ```bash
@@ -44,11 +51,17 @@ gen6dcode --help
 Example output:
 
 ```text
-gen6dcode v3.0.4
+gen6dcode v3.1.0
 +---------------------------+
 | digits : 6                |
 | code   : 482913           |
 +---------------------------+
+```
+
+JSON output:
+
+```json
+{"name":"@poln/gen6dcode","version":"3.1.0","digits":6,"code":"482913"}
 ```
 
 ## Rules

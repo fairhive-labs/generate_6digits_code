@@ -55,11 +55,24 @@ function formatOutput(digits, code) {
     ].join('\n')
 }
 
+function formatJsonOutput(digits, code) {
+    return JSON.stringify({
+        name: packageJson.name,
+        version: packageJson.version,
+        digits,
+        code
+    })
+}
+
 const argv = yargs(hideBin(process.argv))
     .scriptName('gen6dcode')
     .usage('$0 [options]')
     .version(packageJson.version)
     .alias('v', 'version')
+    .option('json', {
+        type: 'boolean',
+        description: 'output the generated code as JSON'
+    })
     .option('digits', {
         alias: 'd',
         type: 'number',
@@ -85,4 +98,8 @@ const argv = yargs(hideBin(process.argv))
 
 const code = generateCode(argv.digits)
 
-console.log(formatOutput(argv.digits, code))
+if (argv.json) {
+    console.log(formatJsonOutput(argv.digits, code))
+} else {
+    console.log(formatOutput(argv.digits, code))
+}
