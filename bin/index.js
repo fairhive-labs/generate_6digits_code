@@ -2,6 +2,7 @@
 
 const yargs = require('yargs/yargs')
 const { hideBin } = require('yargs/helpers')
+const packageJson = require('../package.json')
 const {
     DEFAULT_DIGITS,
     MAX_DIGITS,
@@ -9,9 +10,56 @@ const {
     generateCode
 } = require('../lib/generate-code')
 
+const ANSI = {
+    reset: '\x1b[0m',
+    bold: '\x1b[1m',
+    dim: '\x1b[2m',
+    cyan: '\x1b[36m',
+    yellow: '\x1b[33m'
+}
+
+function supportsColor() {
+    return process.stdout.isTTY && process.env.NO_COLOR === undefined
+}
+
+function paint(text, color) {
+    if (!supportsColor()) {
+        return text
+    }
+
+    return `${color}${text}${ANSI.reset}`
+}
+
+function createRow(label, value, width, color) {
+    const plainContent = `${label} : ${value}`
+    const padding = ' '.repeat(width - plainContent.length)
+    const renderedValue = paint(value, color)
+
+    return `| ${label} : ${renderedValue}${padding} |`
+}
+
+function formatOutput(digits, code) {
+    const header = paint(`gen6dcode v${packageJson.version}`, `${ANSI.bold}${ANSI.cyan}`)
+    const rows = [
+        ['digits', String(digits), ANSI.dim],
+        ['code  ', code, `${ANSI.bold}${ANSI.yellow}`]
+    ]
+    const width = Math.max(...rows.map(([label, value]) => `${label} : ${value}`.length))
+    const border = `+${'-'.repeat(width + 2)}+`
+
+    return [
+        header,
+        border,
+        ...rows.map(([label, value, color]) => createRow(label, value, width, color)),
+        border
+    ].join('\n')
+}
+
 const argv = yargs(hideBin(process.argv))
     .scriptName('gen6dcode')
     .usage('$0 [options]')
+    .version(packageJson.version)
+    .alias('v', 'version')
     .option('digits', {
         alias: 'd',
         type: 'number',
@@ -37,5 +85,4 @@ const argv = yargs(hideBin(process.argv))
 
 const code = generateCode(argv.digits)
 
-console.log(`${argv.digits} digits`)
-console.log(`=> [ \x1b[33m${code}\x1b[0m ]`)
+console.log(formatOutput(argv.digits, code))

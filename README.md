@@ -44,8 +44,11 @@ gen6dcode --help
 Example output:
 
 ```text
-6 digits
-=> [ 482913 ]
+gen6dcode v3.0.4
++---------------------------+
+| digits : 6                |
+| code   : 482913           |
++---------------------------+
 ```
 
 ## Rules

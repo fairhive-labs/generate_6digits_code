@@ -1,4 +1,7 @@
 const assert = require('assert')
+const { spawnSync } = require('child_process')
+const path = require('path')
+const packageJson = require('../package.json')
 const {
     DEFAULT_DIGITS,
     MAX_DIGITS,
@@ -18,6 +21,18 @@ function expectThrows(fn, message) {
     }
 
     assert.strictEqual(didThrow, true, 'expected function to throw')
+}
+
+function runCli(args) {
+    const result = spawnSync(process.execPath, [path.join(__dirname, '..', 'bin', 'index.js'), ...args], {
+        encoding: 'utf8',
+        env: {
+            ...process.env,
+            NO_COLOR: '1'
+        }
+    })
+
+    return result
 }
 
 assert.strictEqual(DEFAULT_DIGITS, 6)
@@ -45,5 +60,20 @@ for (let index = 0; index < 25; index += 1) {
 }
 
 assert.ok(twentyDigitSamples.size > 1, '20-digit output should vary across samples')
+
+const cliResult = runCli(['-d', '6'])
+assert.strictEqual(cliResult.status, 0, cliResult.stderr)
+assert.strictEqual(cliResult.stderr, '')
+assert.ok(cliResult.stdout.startsWith(`gen6dcode v${packageJson.version}\n`))
+assert.match(cliResult.stdout, /\| digits : 6 +\|/)
+assert.match(cliResult.stdout, /\| code   : [0-9]{6} +\|/)
+
+const cliVersion = runCli(['--version'])
+assert.strictEqual(cliVersion.status, 0, cliVersion.stderr)
+assert.strictEqual(cliVersion.stdout.trim(), packageJson.version)
+
+const cliInvalid = runCli(['-d', '0'])
+assert.strictEqual(cliInvalid.status, 1)
+assert.match(cliInvalid.stderr, /--digits must be an integer between 1 and 20/)
 
 console.log('All tests passed.')
