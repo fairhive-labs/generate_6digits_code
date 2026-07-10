@@ -51,7 +51,7 @@ gen6dcode --help
 Example output:
 
 ```text
-gen6dcode v3.1.0
+gen6dcode v3.1.1
 +---------------------------+
 | digits : 6                |
 | code   : 482913           |
@@ -61,7 +61,7 @@ gen6dcode v3.1.0
 JSON output:
 
 ```json
-{"name":"@poln/gen6dcode","version":"3.1.0","digits":6,"code":"482913"}
+{"name":"@poln/gen6dcode","version":"3.1.1","digits":6,"code":"482913"}
 ```
 
 ## Rules
