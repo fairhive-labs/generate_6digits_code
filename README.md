@@ -4,7 +4,7 @@ Small Node.js CLI for generating zero-padded numeric codes with cryptographicall
 
 ## Runtime
 
-This project targets Node.js 24 LTS. Use `.nvmrc` with `nvm use`, or install any `24.x` release.
+This project supports Node.js 22.12.0 or newer. Use `.nvmrc` with `nvm use` for the recommended development version.
 
 ## Install
 
